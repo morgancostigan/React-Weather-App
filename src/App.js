@@ -39,7 +39,18 @@ class App extends React.Component{
         description: data.weather[0].main,
         error: ""
       })
-}
+    } else {
+      this.setState({
+        city: undefined,
+        temp: undefined,
+        high: undefined,
+        low: undefined,
+        humidity: undefined,
+        windspeed: undefined,
+        description: undefined,
+        error: "Please enter a valid zipcode."
+      })
+    }
     console.log(this.state);
     
     

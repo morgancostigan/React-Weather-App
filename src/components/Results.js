@@ -10,7 +10,7 @@ class Results extends React.Component {
                 {this.props.high && this.props.low && <p>Temperature Range: {this.props.low}-{this.props.high}°F</p>}
                 {this.props.humidity && <p>Humidity: {this.props.humidity}%</p>}
                 {this.props.windspeed && <p>Wind: {this.props.windspeed} mph</p>}
-                <p>{this.props.error}</p>
+                {this.props.error && <p>{this.props.error}</p>}
             </div>
         )
     }
