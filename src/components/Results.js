@@ -1,19 +1,15 @@
 import React from "react"
 
-class Results extends React.Component {
-    render() {
-        return (
-            <div>
-                {this.props.city && <h3>Location: {this.props.city}</h3>}
-                {this.props.temp && <h3>Current Temperature: {this.props.temp}°F</h3>}
-                {this.props.description && <p>Current Conditions: {this.props.description}</p>}
-                {this.props.high && this.props.low && <p>Temperature Range: {this.props.low}-{this.props.high}°F</p>}
-                {this.props.humidity && <p>Humidity: {this.props.humidity}%</p>}
-                {this.props.windspeed && <p>Wind: {this.props.windspeed} mph</p>}
-                {this.props.error && <p>{this.props.error}</p>}
-            </div>
-        )
-    }
-};
+const Results = props => (
+    <div>
+        {props.city && <h3>Location: {props.city}</h3>}
+        {props.temp && <h3>Current Temperature: {props.temp}°F</h3>}
+        {props.description && <p>Current Conditions: {props.description}</p>}
+        {props.high && props.low && <p>Temperature Range: {props.low}-{props.high}°F</p>}
+        {props.humidity && <p>Humidity: {props.humidity}%</p>}
+        {props.windspeed && <p>Wind: {props.windspeed} mph</p>}
+        {props.error && <p>{props.error}</p>}
+    </div>
+)
 
 export default Results;
