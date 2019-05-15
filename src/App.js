@@ -21,14 +21,14 @@ class App extends React.Component{
   }
   
   getWeather = async (e) => {
-    console.log(API_KEY);
+    // console.log(API_KEY);
     e.preventDefault();
     const zipcode = e.target.elements.zipcode.value;
 
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
     if (zipcode){
-      console.log(data);
+      // console.log(data);
       this.setState({
         city: data.name,
         temp: data.main.temp,
@@ -51,7 +51,7 @@ class App extends React.Component{
         error: "Please enter a valid zipcode."
       })
     }
-    console.log(this.state);
+    // console.log(this.state);
     
     
   }
