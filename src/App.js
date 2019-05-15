@@ -15,7 +15,7 @@ class App extends React.Component{
     e.preventDefault();
     const zipcode = e.target.elements.zipcode.value;
 
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=metric`);
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
     console.log(data);
     
