@@ -4,7 +4,8 @@ import './App.css';
 import Title from './components/Title';
 import Results from './components/Results';
 import Form from './components/Form';
-require('dotenv').config();
+// require('dotenv').config();
+// import zipcodes from "zipcodes"
 
 // const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const API_KEY = "6361f0d3d15bb93fea66cfbab757cc7b";
@@ -17,8 +18,9 @@ class App extends React.Component{
     humidity: undefined,
     windspeed: undefined,
     description: undefined,
+    return_error: undefined,
     error: undefined
-  }
+  }//end state
   
   getWeather = async (e) => {
     // console.log(API_KEY);
@@ -27,19 +29,8 @@ class App extends React.Component{
 
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
-    if (zipcode){
+    if (data.cod == 404 || zipcode == false){
       // console.log(data);
-      this.setState({
-        city: data.name,
-        temp: data.main.temp,
-        high: data.main.temp_max,
-        low: data.main.temp_min,
-        humidity: data.main.humidity,
-        windspeed: data.wind.speed,
-        description: data.weather[0].main,
-        error: ""
-      })
-    } else {
       this.setState({
         city: undefined,
         temp: undefined,
@@ -48,13 +39,24 @@ class App extends React.Component{
         humidity: undefined,
         windspeed: undefined,
         description: undefined,
+        return_error: "",
         error: "Please enter a valid zipcode."
       })
-    }
-    // console.log(this.state);
+    } else {
+      this.setState({
+        city: data.name,
+        temp: data.main.temp,
+        high: data.main.temp_max,
+        low: data.main.temp_min,
+        humidity: data.main.humidity,
+        windspeed: data.wind.speed,
+        description: data.weather[0].main,
+        return_error: "",
+        error: ""
+      })
+    } //end if/else    
     
-    
-  }
+  } //end getWeather
 
   render() {
     return (

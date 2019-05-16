@@ -1,5 +1,6 @@
 import React from "react"
 
+
 const Form = props => (
     <div>
         <form onSubmit={props.getWeather}>
