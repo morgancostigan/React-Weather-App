@@ -5,7 +5,6 @@ import Title from './components/Title';
 import Results from './components/Results';
 import Form from './components/Form';
 // require('dotenv').config();
-// import zipcodes from "zipcodes"
 
 // const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const API_KEY = "6361f0d3d15bb93fea66cfbab757cc7b";
