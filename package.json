@@ -6,7 +6,10 @@
     "dotenv": "^8.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-zipcode": "^1.0.1",
+    "zipcodes": "^8.0.0",
+    "zippo": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
