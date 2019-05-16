@@ -29,8 +29,8 @@ class App extends React.Component{
 
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
-    if (data.cod == 404 || zipcode == false){
-      // console.log(data);
+    if (data.cod == 404 || zipcode == false){ //== rather than === to prevent crash on bad data 
+      console.log(data);
       this.setState({
         city: undefined,
         temp: undefined,
