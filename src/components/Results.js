@@ -1,14 +1,42 @@
 import React from "react"
 
 const Results = props => (
-    <div>
-        {props.city && <h3>Location: {props.city}</h3>}
-        {props.temp && <h3>Current Temperature: {props.temp}°F</h3>}
-        {props.description && <p>Current Conditions: {props.description}</p>}
-        {props.high && props.low && <p>Temperature Range: {props.low}-{props.high}°F</p>}
-        {props.humidity && <p>Humidity: {props.humidity}%</p>}
-        {props.windspeed && <p>Wind: {props.windspeed} mph</p>}
-        {props.error && <p>{props.error}</p>}
+    <div className="weather__info">
+        {
+            props.city && <p className="weather__key">Location: 
+            <span className="weather__value"> {props.city}</span>
+            </p>
+        }
+        {
+            props.temp && <p className="weather__key">Current Temperature: 
+            <span className="weather__value"> {props.temp}°F</span>
+            </p>
+        }
+        {
+            props.description && <p className="weather__key">Current Conditions: 
+            <span className="weather__value"> {props.description}</span>
+            </p>
+        }
+        {
+            props.high && props.low && <p className="weather__key">Temperature Range: 
+            <span className="weather__value"> {props.low}-{props.high}°F</span>
+            </p>
+        }
+        {
+            props.humidity && <p className="weather__key">Humidity: 
+            <span className="weather__value"> {props.humidity}%</span>
+            </p>
+        }
+        {
+            props.windspeed && <p className="weather__key">Wind: 
+            <span className="weather__value"> {props.windspeed} mph</span>
+            </p>
+        }
+        {
+            props.error && <p>
+                <span className="weather__key">{props.error}</span>
+                </p>
+            }
     </div>
 )
 
