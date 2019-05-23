@@ -3,6 +3,7 @@ import './App.css';
 
 import Title from './components/Title';
 import Results from './components/Results';
+import FiveResults from './components/FiveResults';
 import Form from './components/Form';
 // require('dotenv').config();
 
@@ -25,7 +26,8 @@ class App extends Component{
     e.preventDefault();
     const zipcode = e.target.elements.zipcode.value;
 
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=imperial`);
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${API_KEY}&units=imperial`);  //current conditions
+    // const api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode},us&appid=${API_KEY}&units=imperial`); //5 day forecast
     const data = await api_call.json();
     if (data.cod == 404 || zipcode == false){ //== rather than === to prevent crash on bad data 
       console.log(data);
@@ -37,10 +39,12 @@ class App extends Component{
         humidity: undefined,
         windspeed: undefined,
         description: undefined,
+        button: undefined,
         return_error: "",
         error: "Please enter a valid zipcode."
       })
     } else {
+      console.log(data);
       this.setState({
         city: data.name,
         temp: data.main.temp,
@@ -49,6 +53,9 @@ class App extends Component{
         humidity: data.main.humidity,
         windspeed: data.wind.speed,
         description: data.weather[0].main,
+        button: <form onSubmit={this.getFive}>
+          <button>Get Five Day Forecast</button>
+        </form>,
         return_error: "",
         error: ""
       })
@@ -76,6 +83,7 @@ class App extends Component{
                     humidity={this.state.humidity}
                     windspeed={this.state.windspeed}
                     description={this.state.description}
+                    button={this.state.button}
                     error={this.state.error}
                   />
                 </div>                
